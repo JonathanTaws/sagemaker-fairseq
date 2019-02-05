@@ -48,22 +48,9 @@ def ping():
 
 @app.route('/invocations', methods=['POST'])
 def transformation():
-    """Do an inference on a single batch of data. In this sample server, we take data as CSV, convert
-    it to a pandas data frame for internal use and then convert the predictions back to CSV (which really
-    just means one prediction per line, since there's a single column.
+    """Do an inference on a single batch of data. 
     """
     data = None
-
-    # Convert from CSV to pandas
-    #if flask.request.content_type == 'text/':
-    #    data = flask.request.data.decode('utf-8')
-    #    s = StringIO.StringIO(data)
-    #    data = pd.read_csv(s, header=None)
-    #else:
-    #    return flask.Response(response='This predictor only supports CSV data', status=415, mimetype='text/plain')
-
-    #print('Invoked with {} records'.format(data.shape[0]))
-
     data = flask.request.data.decode('utf-8')
     
     # Do the prediction

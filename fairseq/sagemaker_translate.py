@@ -34,7 +34,6 @@ logger = logging.getLogger(__name__)
 
 def model_fn(model_dir):
     
-    # model_dir = os.path.join(model_dir, 'wmt14.en-fr.fconv-py')
     model_name = 'checkpoint_best.pt'
     model_path = os.path.join(model_dir, model_name)
 
@@ -44,8 +43,7 @@ def model_fn(model_dir):
 
     # Will be overidden by the model_info['args'] - need to keep for pre-trained models   
     parser = options.get_generation_parser(interactive=True)
-    # get args for FairSeq by converting the hyperparameters as if they
-    # were command-line arguments
+    # get args for FairSeq by converting the hyperparameters as if they were command-line arguments
     argv_copy = copy.deepcopy(sys.argv)
     # remove the modifications we did in the command-line arguments
     sys.argv[1:] = ['--path', model_path, model_dir]
@@ -63,13 +61,11 @@ def model_fn(model_dir):
     # Setup task, e.g., translation
     task = tasks.setup_task(args)
 
-    # logger.info('model_info: {}'.format(model_info))
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     logger.info('Current device: {}'.format(device))
 
     model_paths = [os.path.join(model_dir, model_name)]
     models, model_args = utils.load_ensemble_for_inference(model_paths, task, model_arg_overrides={})
-
 
     # Set dictionaries
     tgt_dict = task.target_dictionary

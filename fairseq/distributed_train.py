@@ -43,7 +43,7 @@ def main(args):
     num_gpus_per_node = torch.cuda.device_count()
     world_size = len(hosts)
     
-    args.distributed_backend = 'gloo'  # doesn't work with NCCL
+    args.distributed_backend = 'gloo'
     
     args.distributed_init_method = 'tcp://{host}:{port}'.format(
                     host=hosts[0], port=port)
