@@ -1,5 +1,7 @@
 # FAIRSeq on Amazon SageMaker
 
+FAIRSeq [v0.6.0](https://github.com/pytorch/fairseq/releases/tag/v0.6.0)
+
 ## Requirements
 * AWS Role with full access to Amazon SageMaker, Amazon S3, and Amazon ECR
 * Enough disk space to download the datasets from FAIRSeq - refer to the FAIRSeq documentation for estimated sizes
